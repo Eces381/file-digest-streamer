@@ -1,6 +1,6 @@
 [project]
 name = "file-digest-streamer"
-version = "0.1.1"
+version = "0.1.2"
 description = "Computes an incremental hash digest of a file in fixed-size blocks to avoid loading large files into memory."
 requires-python = ">=3.10"
 dependencies = []
