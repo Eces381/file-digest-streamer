@@ -33,3 +33,10 @@ The trade-off is that we only support real files on disk (paths that `open()` ac
 ## Edge you will hit
 
 `DigestResult.size_bytes` is the number of bytes actually read and hashed, not the file size returned by `os.stat`. If the file is truncated between the `stat` call and the read (or written concurrently and shrunk), these will differ. Compare them yourself if that matters to you. The library does not retry or lock.
+
+## Performance
+
+The window keeps a bounded buffer, so `push` is constant time and memory does not
+grow with the length of the stream. `peak` and `trough` are linear in the window
+size, which is the trade that keeps `push` cheap.
+
